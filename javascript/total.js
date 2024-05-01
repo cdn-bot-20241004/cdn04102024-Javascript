@@ -1,8 +1,8 @@
 async function obtenerNoticias() {
     const [response1, response2, response3] = await Promise.all([
-        fetch('../src/Posts/cSharp/preview/noticias.json'),
-        fetch('../src/Posts/js/preview/noticiasJs.json'),
-        fetch('../src/Posts/python/preview/noticiasPy.json')
+        fetch('/json/noticias.json'),
+        fetch('/json/noticiasJs.json'),
+        fetch('/json/noticiasPy.json')
     ]);
 
     const data1 = await response1.json();

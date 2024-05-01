@@ -17,7 +17,7 @@ async function cargarNoticias() {
 }
 
 async function obtenerNoticias() {
-    const response = await fetch('../preview/noticiasJs.json');
+    const response = await fetch('/json/noticiasJs.json');
     const data = await response.json();
 
     data.sort((a, b) => {

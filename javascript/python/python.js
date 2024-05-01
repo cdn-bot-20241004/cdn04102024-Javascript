@@ -1,6 +1,6 @@
 
 async function obtenerNoticias() {
-    const response = await fetch('./noticiasPy.json');
+    const response = await fetch('/json/noticiasPy.json');
     const data = await response.json();
 
     data.sort((a, b) => {
