@@ -1,21 +1,22 @@
-let button = document.querySelector(".button");
+document.addEventListener("DOMContentLoaded", function () {
+    let button = document.querySelector(".buttonTop");
 
-button.addEventListener("click", function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: "instant",
+    window.addEventListener('scroll', () => {
+        if (button) {
+            if (
+                document.documentElement.scrollTop > 250
+            ) {
+                button.style.display = "flex";
+            } else {
+                button.style.display = "none";
+            }
+        }
+    });
+
+    button.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
     });
 });
-
-window.onscroll = () => {
-    if (button) {
-        if (
-            document.body.scrollTop > 150 ||
-            document.documentElement.scrollTop > 150
-        ) {
-            button.style.display = "flex";
-        } else {
-            button.style.display = "none";
-        }
-    }
-};
