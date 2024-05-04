@@ -53,15 +53,15 @@ function crearNovedad({ titulo, descripcion, autor, fecha, url, imagen }) {
 
     const descripcionElement = document.createElement('p');
     descripcionElement.classList.add('desc_info');
-    descripcionElement.textContent = `Descripción: ${descripcion}`;
+    descripcionElement.textContent = `${descripcion}`;
 
     const autorElement = document.createElement('p');
     autorElement.classList.add('author_info');
-    autorElement.textContent = `Autor: ${autor}`;
+    autorElement.textContent = `${autor}`;
 
     const fechaElement = document.createElement('p');
     fechaElement.classList.add('date_info');
-    fechaElement.textContent = `Fecha: ${fecha}`;
+    fechaElement.textContent = `${fecha}`;
 
     const leerMas = document.createElement('a');
     leerMas.href = url;
