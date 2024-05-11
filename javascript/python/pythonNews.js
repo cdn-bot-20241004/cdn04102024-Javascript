@@ -38,8 +38,8 @@ async function cargarNoticias() {
 
 
 function crearNovedad({ titulo, descripcion, autor, fecha, url, imagen }) {
-    const divNoticia = document.createElement('div');
-    divNoticia.classList.add('card');
+    const novedadElement = document.createElement('div');
+    novedadElement.classList.add('card');
 
     const divContent = document.createElement('div');
     divContent.classList.add('content');
@@ -53,43 +53,69 @@ function crearNovedad({ titulo, descripcion, autor, fecha, url, imagen }) {
 
     const descripcionElement = document.createElement('p');
     descripcionElement.classList.add('desc_info');
-    descripcionElement.textContent = `${descripcion}`;
+    descripcionElement.textContent = ` ${descripcion}`;
 
     const autorElement = document.createElement('p');
     autorElement.classList.add('author_info');
-    autorElement.textContent = `${autor}`;
+    autorElement.textContent = ` ${autor}`;
 
     const fechaElement = document.createElement('p');
     fechaElement.classList.add('date_info');
     fechaElement.textContent = `${fecha}`;
 
-    const leerMas = document.createElement('a');
-    leerMas.href = url;
-    const btn = document.createElement('button');
-    btn.classList.add('btn');
-    btn.textContent = 'Leer más';
-    leerMas.appendChild(btn);
+    // query  mÃ³viles
+    if (window.matchMedia('(min-width: 320px) and (max-width: 527px)').matches) {
+        const novedadLink = document.createElement('a');
+        novedadLink.href = url;
+        novedadLink.appendChild(tituloElement);
 
-    leftSide.appendChild(tituloElement);
-    leftSide.appendChild(descripcionElement);
-    leftSide.appendChild(autorElement);
-    leftSide.appendChild(fechaElement);
-    leftSide.appendChild(leerMas);
+        const imagenLink = document.createElement('a');
+        imagenLink.href = url;
+        const imagenElement = document.createElement('img');
+        imagenElement.src = imagen;
+        imagenElement.alt = 'Imagen de la noticia';
+        imagenLink.appendChild(imagenElement);
 
-    const rightSide = document.createElement('div');
-    rightSide.classList.add('rightSide');
+        leftSide.appendChild(novedadLink);
+        leftSide.appendChild(descripcionElement);
+        leftSide.appendChild(autorElement);
+        leftSide.appendChild(fechaElement);
 
-    const imagenElement = document.createElement('img');
-    imagenElement.src = imagen;
-    imagenElement.alt = 'Imagen de la noticia';
+        const rightSide = document.createElement('div');
+        rightSide.classList.add('rightSide');
+        rightSide.appendChild(imagenLink);
 
-    rightSide.appendChild(imagenElement);
+        divContent.appendChild(leftSide);
+        divContent.appendChild(rightSide);
+    } else {
+        const leerMas = document.createElement('a');
+        leerMas.href = url;
+        const btn = document.createElement('button');
+        btn.classList.add('btn');
+        btn.textContent = 'Leer más';
+        leerMas.appendChild(btn);
 
-    divContent.appendChild(leftSide);
-    divContent.appendChild(rightSide);
+        leftSide.appendChild(tituloElement);
+        leftSide.appendChild(descripcionElement);
+        leftSide.appendChild(autorElement);
+        leftSide.appendChild(fechaElement);
+        leftSide.appendChild(leerMas);
 
-    divNoticia.appendChild(divContent);
-    return divNoticia;
+        const rightSide = document.createElement('div');
+        rightSide.classList.add('rightSide');
+
+        const imagenElement = document.createElement('img');
+        imagenElement.src = imagen;
+        imagenElement.alt = 'Imagen de la noticia';
+
+        rightSide.appendChild(imagenElement);
+
+        divContent.appendChild(leftSide);
+        divContent.appendChild(rightSide);
+    }
+
+    novedadElement.appendChild(divContent);
+    return novedadElement;
 }
 
 cargarNoticias();
